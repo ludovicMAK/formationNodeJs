@@ -24,3 +24,9 @@ console.log(chain(3)
     .multiply(2)
     .done()  )
 */
+const chalk = require("chalk");
+
+console.log(chalk.bgRed("Erreur!"));
+console.log(chalk.green.bold("Succeès!"));
+console.log(chalk.yellow.underline("Avertissement!"));
+
