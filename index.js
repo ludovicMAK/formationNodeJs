@@ -43,9 +43,34 @@ if(options === "foo"){
 }else {
     console.log("default");
 }*/
-const argv = require("minimist")(process.argv.slice(2));
+
+/*const argv = require("minimist")(process.argv.slice(2));
 
 console.log(argv);
 console.log(argv.name);
-console.log(argv.a);
+console.log(argv.a);*/
+const { readFileSync, writeFileSync } = require("fs");
+
+const jsonToObject = JSON.parse(readFileSync('./data.json','utf-8'));
+/*
+console.log(jsonToObject.name);
+console.log(jsonToObject.age);
+console.log(jsonToObject.legal);
+
+const myData = {
+    name:"justine",
+    age :27,
+    legal: true
+}
+const objectToJson = JSON.stringify(myData);
+console.log(objectToJson);
+
+writeFileSync('./myData.json', objectToJson);*/
+const myData =JSON.parse(readFileSync('./myData.json','utf-8'));
+console.log(myData.name);
+
+myData.name ="pierre";
+const objectToJson = JSON.stringify(myData);
+writeFileSync('./myData.json',objectToJson);
+
 
