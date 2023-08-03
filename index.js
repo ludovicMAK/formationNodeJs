@@ -56,21 +56,26 @@ const jsonToObject = JSON.parse(readFileSync('./data.json','utf-8'));
 console.log(jsonToObject.name);
 console.log(jsonToObject.age);
 console.log(jsonToObject.legal);
+*/
 
-const myData = {
+const newData = {
     name:"justine",
     age :27,
     legal: true
 }
-const objectToJson = JSON.stringify(myData);
+const objToJson = JSON.stringify(newData);
 console.log(objectToJson);
 
-writeFileSync('./myData.json', objectToJson);*/
+writeFileSync('./myData.json', objectToJson);
 const myData =JSON.parse(readFileSync('./myData.json','utf-8'));
-console.log(myData.name);
+
 
 myData.name ="pierre";
 const objectToJson = JSON.stringify(myData);
 writeFileSync('./myData.json',objectToJson);
+
+debugger
+
+console.log(myData.name);
 
 
