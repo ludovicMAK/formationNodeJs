@@ -49,33 +49,39 @@ if(options === "foo"){
 console.log(argv);
 console.log(argv.name);
 console.log(argv.a);*/
-const { readFileSync, writeFileSync } = require("fs");
+//const { readFileSync, writeFileSync } = require("fs");
 
-const jsonToObject = JSON.parse(readFileSync('./data.json','utf-8'));
+//const jsonToObject = JSON.parse(readFileSync('./data.json','utf-8'));
 /*
 console.log(jsonToObject.name);
 console.log(jsonToObject.age);
 console.log(jsonToObject.legal);
 */
 
-const newData = {
-    name:"justine",
-    age :27,
-    legal: true
-}
-const objToJson = JSON.stringify(newData);
-console.log(objectToJson);
+// const newData = {
+//     name:"justine",
+//     age :27,
+//     legal: true
+// }
+// const objToJson = JSON.stringify(newData);
+// console.log(objectToJson);
 
-writeFileSync('./myData.json', objectToJson);
-const myData =JSON.parse(readFileSync('./myData.json','utf-8'));
+// writeFileSync('./myData.json', objectToJson);
+// const myData =JSON.parse(readFileSync('./myData.json','utf-8'));
 
 
-myData.name ="pierre";
-const objectToJson = JSON.stringify(myData);
-writeFileSync('./myData.json',objectToJson);
+// myData.name ="pierre";
+// const objectToJson = JSON.stringify(myData);
+// writeFileSync('./myData.json',objectToJson);
 
-debugger
+// debugger
 
-console.log(myData.name);
+// console.log(myData.name);
+
+ console.log ("Je suis lancé en premier ")
+setTimeout(()=>{
+    console.log ("après 3 seconde")
+},3000)
+ console.log ("après c'est moi ")
 
 
