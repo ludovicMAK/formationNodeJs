@@ -86,16 +86,24 @@ console.log(jsonToObject.legal);
 // },3000)
 //  console.log ("après c'est moi ")
 
-const request  = require('postman-request');
-request("https://dog.ceo/api/breeds/image/random",(error,response,body)=>{
-    const {message,status} = JSON.parse(body);
-    console.log(message);
-    console.log(status);
-})
+// const request  = require('postman-request');
+// request("https://dog.ceo/api/breeds/image/random",(error,response,body)=>{
+//     const {message,status} = JSON.parse(body);
+//     console.log(message);
+//     console.log(status);
+// })
 
-request("https://api.thecatapi.com/v1/images/search",(error,response,body)=>{
-    const catPicture = JSON.parse(body);
-    console.log(catPicture[0].url);
-})
+// request("https://api.thecatapi.com/v1/images/search",(error,response,body)=>{
+//     const catPicture = JSON.parse(body);
+//     console.log(catPicture[0].url);
+// })
+
+fetch("https://dog.ceo/api/breeds/image/random")
+    .then(res=>res.json())
+    .then(data=>console.log(data.message));
+
+fetch("https://api.thecatapi.com/v1/images/search")
+    .then(res=>res.json())
+    .then(data=>console.log(data[0].url));
 
 
