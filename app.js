@@ -148,9 +148,15 @@ console.log(jsonToObject.legal);
 //     console.log('Erreur:',err);
 //     console.log('Data:', data);
 // })
+const path = require("path")
 const express = require("express");
+const { log } = require("console");
 const app = express();
 const port = 3000; //80
+
+
+app.use(express.static(path.join(__dirname,"views")));
+app.use(express.static(path.join(__dirname,"public")));
 
 app.get("/",(req,res)=>{
     res.send("<h1>Hello world</h1>");
@@ -165,3 +171,4 @@ app.get("/about",(req,res)=>{
 app.listen(port,()=>{
     console.log(`App listening on port ${port}!`)
 });
+console.log(__dirname)
