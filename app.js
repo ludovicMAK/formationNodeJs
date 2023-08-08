@@ -149,22 +149,29 @@ console.log(jsonToObject.legal);
 //     console.log('Data:', data);
 // })
 const path = require("path")
+const { engine } = require("express-handlebars")
 const express = require("express");
-const { log } = require("console");
+//const { log } = require("console");
+
 const app = express();
 const port = 3000; //80
 
+app.engine('handlebars', engine());
+app.set('view engine','handlebars');
+app.set('views',path.join(__dirname,"views"));
 
-app.use(express.static(path.join(__dirname,"views")));
+//app.use(express.static(path.join(__dirname,"views")));
 app.use(express.static(path.join(__dirname,"public")));
 
 app.get("/",(req,res)=>{
-    res.send("<h1>Hello world</h1>");
+    res.render('home',{
+        title: 'Home',
+        age:28,
+    });
 })
 app.get("/about",(req,res)=>{
-    res.send({
-        name:"alex",
-        age:30
+    res.render('about',{
+        title:'About',
     });
 })
 
