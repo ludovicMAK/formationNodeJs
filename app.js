@@ -166,25 +166,33 @@ app.set('view engine','handlebars');
 app.use(express.static(path.join(__dirname,"public")));
 
 app.get("/",(req,res)=>{
-   const {location,unit} = req.query;
+//    const {location,unit} = req.query;
    
-   if(!location){
-    return res.send('Une erreur s\'est produit il manque la localisation');
-   }else if(!unit){
-    return res.send('Une erreur s\'est produit il manque l\'unité');
-   }
-   console.log(req.query);
+//    if(!location){
+//     return res.send('Une erreur s\'est produit il manque la localisation');
+//    }else if(!unit){
+//     return res.send('Une erreur s\'est produit il manque l\'unité');
+//    }
+//    console.log(req.query);
 
-   weather(location,unit,(err,data)=>{
-        console.log('Err:',err);
-        console.log('Data:',data);
+//    weather(location,unit,(err,data)=>{
+//         console.log('Err:',err);
+//         console.log('Data:',data);
+//    })
+
+    res.render('home');
+})
+
+app.get("/weather",(req,res)=>{
+    const {location} = req.query;
+
+    weather(location,unit="m",(err,data)=>{
+        if(err) res.send(`Une erreur s'est produite. ${err}`)
+        res.send(data)
    })
 
-    res.render('home',{
-        title: 'Home',
-        age:28,
-    });
 })
+
 app.get("/about",(req,res)=>{
     res.render('about',{
         title:'About',

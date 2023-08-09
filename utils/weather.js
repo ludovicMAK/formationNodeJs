@@ -7,7 +7,13 @@ const weather = (location,unit,callback)=>{
                 callback(`Impossible de renvoyer vos information. Error ${data.error.code}: ${data.error.info}`,undefined)
             }else{
                 const{current,location} = data
-            callback(undefined,`le nom de la ville est ${location.region}. le nom du pays est ${location.country}. Il fait ${current.temperature}°, le ressenti est de ${current.feelslike}. le temps est ${current.weather_descriptions[0]}`);
+            callback(undefined,{
+                location: location.name,
+                country: location.country,
+                temperature: current.temperature,
+                feelslike: current.feelslike,
+                weather_descriptions: current.weather_descriptions[0],
+            });
             }
             
         });
