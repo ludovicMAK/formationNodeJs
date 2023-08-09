@@ -151,6 +151,8 @@ console.log(jsonToObject.legal);
 const path = require("path")
 const { engine } = require("express-handlebars")
 const express = require("express");
+const {weather} = require("./utils/weather");
+const { error } = require("console");
 //const { log } = require("console");
 
 const app = express();
@@ -164,6 +166,20 @@ app.set('view engine','handlebars');
 app.use(express.static(path.join(__dirname,"public")));
 
 app.get("/",(req,res)=>{
+   const {location,unit} = req.query;
+   
+   if(!location){
+    return res.send('Une erreur s\'est produit il manque la localisation');
+   }else if(!unit){
+    return res.send('Une erreur s\'est produit il manque l\'unité');
+   }
+   console.log(req.query);
+
+   weather(location,unit,(err,data)=>{
+        console.log('Err:',err);
+        console.log('Data:',data);
+   })
+
     res.render('home',{
         title: 'Home',
         age:28,
